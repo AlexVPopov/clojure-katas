@@ -4,9 +4,12 @@
 (core/defproblem expt-linear
   "b^n = b*b^(n-1)
    b^0 = 1"
-  [base index])
+  [base index]
+  (if (zero? index)
+    1
+    (* base (expt-linear base (dec index)))))
 
 (core/defproblem expt-fast
   "b^n = (b^(n/2))^2 if n is even
    b^n = b*b^(n-1) if n is odd"
-   [base index])
+  [base index])
