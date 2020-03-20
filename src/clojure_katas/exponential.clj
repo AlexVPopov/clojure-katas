@@ -12,4 +12,8 @@
 (core/defproblem expt-fast
   "b^n = (b^(n/2))^2 if n is even
    b^n = b*b^(n-1) if n is odd"
-  [base index])
+  [base index]
+  (cond
+    (= index 2) (* base base)
+    (even? index) (expt-fast (expt-fast base (/ index 2)) 2)
+    (odd? index) (* base (expt-fast base (dec index)))))
